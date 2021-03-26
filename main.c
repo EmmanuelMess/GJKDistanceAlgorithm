@@ -69,17 +69,17 @@ bool checkIntersection(struct Shape shape1, struct Shape shape2) {
 
 int main() {
 	struct Shape shape1 = s(3, 0.0,  0.0, 2.0, 0.0, 2.0, 1.0);
-	struct Shape shape2 = s(3, 0.0, 0.0, 2.0, 0.0, 2.0, 1.0);
+	struct Shape shape2 = sFromArray(3, (float[]) {0.0f, 0.0f, 2.0f, 0.0f, 2.0f, 1.0f});
 
 	assert(checkIntersection(shape1, shape2));
 
 	shape1 = s(3, 0.0, -0.0, 2.0, -0.0, 2.0, -1.0);
-	shape2 = s(3, 0.0, 0.0, 2.0, 0.0, 2.0, 1.0);
+	shape2 = sFromArray(3, (float[]) {0.0f, 0.0f, 2.0f, 0.0f, 2.0f, 1.0f});
 
 	assert(checkIntersection(shape1, shape2));
 
 	shape1 = s(3, 0.0, -1.0, 2.0, -1.0, 2.0, -2.0);
-	shape2 = s(3, 0.0, 0.0, 2.0, 0.0, 2.0, 1.0);
+	shape2 = sFromArray(3, (float[]) {0.0f, 0.0f, 2.0f, 0.0f, 2.0f, 1.0f});
 
 	assert(!checkIntersection(shape1, shape2));
 

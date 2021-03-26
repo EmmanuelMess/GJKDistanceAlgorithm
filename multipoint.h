@@ -49,4 +49,24 @@ struct Shape s(int count, ...){
 	return shape;
 }
 
+struct Shape sFromArray(int count, float array[]) {
+	struct Shape shape;
+	struct MultipointData * data = malloc(sizeof(struct MultipointData));
+	shape.shapeData = data;
+	data->len = count;
+	data->points = calloc(count, sizeof(struct Point));
+	shape.farthestInDirection = farthestInMultipointData;
+
+	for(int i = 0, j = 0; j < count; i++, j++) {
+		data->points[j] = p(array[i], array[i+1]);
+		shape.average.x += data->points[j].x;
+		shape.average.y += data->points[j].y;
+	}
+
+	shape.average.x /= (float) count;
+	shape.average.y /= (float) count;
+
+	return shape;
+}
+
 #endif //GJKDISTANCEALGORITHM_MULTIPOINT_H
